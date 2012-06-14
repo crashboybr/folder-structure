@@ -11,7 +11,7 @@ class Rename
     artists = Dir.entries(directory)
     artists.each do |artist|
       next if artist == "." || artist == ".."
-      artist_dir = directory + "/" + artist
+      artist_dir = File.join(directory, artist)
       if File.directory?(artist_dir)
         albums = Dir.entries(artist_dir)
         albums.each do |album|
