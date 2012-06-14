@@ -22,3 +22,7 @@ class Rename
     end
   end
 end
+
+dir = ARGV[0]
+r = Rename.new(directory: dir)
+r.run
