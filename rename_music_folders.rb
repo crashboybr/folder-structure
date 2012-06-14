@@ -17,7 +17,9 @@ class Rename
         albums.each do |album|
           next if album == "." || album == ".."
           new_name = "#{artist} - #{album}"
-          FileUtils.mv File.join(directory, artist, album), File.join(directory, new_name), force: true
+          old_loc = File.join(directory, artist, album)
+          new_loc = File.join(directory, new_name)
+          FileUtils.mv old_loc, new_loc, force: true if File.directory?(old_loc)
         end
         FileUtils.remove_dir File.join(directory, artist), force: true
       end
