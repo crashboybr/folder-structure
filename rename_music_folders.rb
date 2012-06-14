@@ -1,6 +1,10 @@
 class Rename
   attr_accessor :directory
 
+  def initialize(args = {})
+    @directory = args[:directory]
+  end
+
   def get_folders
     Dir.entries(directory)
   end
