@@ -10,13 +10,14 @@ class Rename
     artists.each do |artist|
       next if artist == "." || artist == ".."
       artist_dir = directory + "/" + artist
-      puts "| #{artist}"
       if File.directory?(artist_dir)
         albums = Dir.entries(artist_dir)
         albums.each do |album|
           next if album == "." || album == ".."
-          puts "|-- #{album}"
+          new_name = "#{artist} - #{album}"
+          FileUtil.mv File.join(directory, artist, album), File.join(directory, new_name), force: true
         end
+        FileUtils.remove_dir File.join(directory, artist), force: true
       end
     end
   end
