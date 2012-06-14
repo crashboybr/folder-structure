@@ -5,12 +5,8 @@ class Rename
     @directory = args[:directory]
   end
 
-  def get_folders
-    Dir.entries(directory)
-  end
-
   def run
-    artists = self.get_folders
+    artists = Dir.entries(directory)
     artists.each do |artist|
       next if artist == "." || artist == ".."
       artist_dir = directory + "/" + artist
