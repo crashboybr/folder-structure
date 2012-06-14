@@ -1,3 +1,5 @@
+require 'fileutils'
+
 class Rename
   attr_accessor :directory
 
@@ -15,7 +17,7 @@ class Rename
         albums.each do |album|
           next if album == "." || album == ".."
           new_name = "#{artist} - #{album}"
-          FileUtil.mv File.join(directory, artist, album), File.join(directory, new_name), force: true
+          FileUtils.mv File.join(directory, artist, album), File.join(directory, new_name), force: true
         end
         FileUtils.remove_dir File.join(directory, artist), force: true
       end
